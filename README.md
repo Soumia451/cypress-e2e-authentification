@@ -1,52 +1,59 @@
-# Tests E2E automatisés — Site e-commerce RAJA
+# Tests E2E automatisés avec Cypress
 
-Projet réalisé dans le cadre de ma formation Testeur logiciel (OpenClassrooms).
+Projet réalisé dans le cadre de ma formation en automatisation des tests (Automation Tester Academy).
 
-Automatisation des tests end-to-end des parcours clés du site raja.fr avec Cypress.
+Automatisation de scénarios d'authentification sur deux applications de démonstration, avec des cas passants et non passants.
 
-## Objectifs
+## Scénarios couverts
 
-- Rédiger les scénarios et cas de test des fonctionnalités principales : achat, demande de devis, création de liste, formulaires, modification de compte, recommandations produits
-- Automatiser les flux end-to-end pour fiabiliser les régressions
-- Documenter les résultats et suivre les anomalies
+| Application | Scénario | Vérification |
+|---|---|---|
+| [SauceDemo](https://www.saucedemo.com/) | Connexion avec des identifiants valides | L'en-tête de la page produits s'affiche |
+| SauceDemo | Connexion avec un nom d'utilisateur invalide | La page reste affichée (voir pistes d'amélioration) |
+| [Automation Tester Academy](https://practice.automationtesteracademy.com/) | Connexion avec des identifiants valides | Le titre de la page produits s'affiche |
+| Automation Tester Academy | Connexion avec un mot de passe invalide | Le message d'erreur « Veuillez vérifier… » s'affiche |
+
+Chaque saisie est contrôlée (`should('have.value', …)`) avant la soumission du formulaire.
 
 ## Stack technique
 
 | Outil | Usage |
-|-------|-------|
+|---|---|
 | Cypress | Automatisation des tests E2E |
 | JavaScript | Écriture des scripts de test |
-| GitHub | Versioning et suivi des modifications |
-| Excel / Slack | Documentation et partage des campagnes |
+| Git / GitHub | Versioning |
 
 ## Structure du projet
 
-    cypress/
-    ├── e2e/            # Scénarios de test (parcours achat, devis, formulaires…)
-    ├── fixtures/       # Jeux de données de test
-    └── support/        # Commandes personnalisées et configuration
-    cypress.config.js   # Configuration Cypress
+```
+cypress/
+├── e2e/
+│   └── Test.cy.js   # Les 4 scénarios d'authentification
+├── fixtures/        # Jeux de données de test
+└── support/         # Commandes personnalisées et configuration
+cypress.config.js    # Configuration Cypress
+```
 
 ## Lancer les tests
 
-    # Installer les dépendances
-    npm install
+```bash
+# Installer les dépendances
+npm install
 
-    # Ouvrir l'interface Cypress (mode interactif)
-    npx cypress open
+# Ouvrir l'interface Cypress (mode interactif)
+npx cypress open
 
-    # Lancer tous les tests en mode headless
-    npx cypress run
+# Lancer tous les tests en mode headless
+npx cypress run
+```
 
-## Couverture des tests
+## Pistes d'amélioration
 
-- Parcours d'achat : ajout au panier, tunnel de commande
-- Devis : demande et validation de devis
-- Listes : création et modification de listes de produits
-- Formulaires : validation des champs, messages d'erreur
-- Recommandations : affichage des produits suggérés
+- Vérifier le message d'erreur affiché dans le scénario d'échec SauceDemo
+- Ajouter les parcours panier et commande (tunnel d'achat)
+- Externaliser les identifiants dans les fixtures
+- Lancer les tests automatiquement à chaque push (GitHub Actions)
 
 ## Autrice
 
-Soumia Sadki — QA Analyst & future Product Owner
-https://www.linkedin.com/in/soumia-sadki/
+Soumia Sadki — Analyste QA · [LinkedIn](https://www.linkedin.com/in/soumia-sadki/)
