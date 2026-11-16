@@ -1,5 +1,7 @@
 # Tests E2E automatisés avec Cypress
 
+![Tests E2E](https://github.com/Soumia451/cypress-e2e-authentification/actions/workflows/cypress.yml/badge.svg)
+
 Projet réalisé dans le cadre de ma formation en automatisation des tests (Automation Tester Academy).
 
 Automatisation de scénarios d'authentification sur deux applications de démonstration, avec des cas passants et non passants.
@@ -22,6 +24,7 @@ Chaque saisie est contrôlée (`should('have.value', …)`) avant la soumission 
 | Cypress | Automatisation des tests E2E |
 | JavaScript | Écriture des scripts de test |
 | Git / GitHub | Versioning |
+| GitHub Actions | Exécution automatique des tests à chaque push et chaque lundi |
 
 ## Structure du projet
 
@@ -52,7 +55,6 @@ npx cypress run
 - Vérifier le message d'erreur affiché dans le scénario d'échec SauceDemo
 - Ajouter les parcours panier et commande (tunnel d'achat)
 - Externaliser les identifiants dans les fixtures
-- Lancer les tests automatiquement à chaque push (GitHub Actions)
 
 ## Autrice
 
