@@ -1,0 +1,27 @@
+name: Tests E2E (Cypress)
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1" # tous les lundis à 6h UTC
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Lancer les tests Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+
+      - name: Publier les captures en cas d'échec
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: captures-cypress
+          path: cypress/screenshots
